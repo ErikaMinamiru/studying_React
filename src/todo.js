@@ -17,13 +17,22 @@ class Todo extends Component {
         });
     }
 
+    // 登録ボタンをクリックした際の処理
+    // スプレッド演算子を用いて配列を新しい配列に展開し、その末尾にtextフィールドで入力した値をセット
+    addTodo = () => {
+        const { todos, name } = this.state;
+        this.setState({
+            todos: [...todos, name]
+        });
+    }
+
     render(){
         const { todos } = this.state;
 
         return (
             <div>
                 <input type="text" onInput={this.onInput} />
-                <button>登録</button>
+                <button onClick={this.addTodo} >登録</button>
                 <ul>
                     {todos.map((todo, index) => <li key={index}>{todo}</li>)}
                 </ul>
